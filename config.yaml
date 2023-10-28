@@ -1,0 +1,12 @@
+build:
+  cuda_version: "12.1.1"
+  system_packages:
+    - "libssl-dev"
+  python_packages:
+    - "torch==1.13.1"
+    - "diffusers==0.21.4"
+    - "transformers==4.34.0"
+    - "accelerate==0.23.0"
+    - "safetensors==0.4.0"
+    - "invisible-watermark==0.2.0"
+    - "xformers==0.0.16"
