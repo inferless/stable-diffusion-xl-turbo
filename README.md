@@ -39,7 +39,7 @@ The following is a sample Input and Output JSON for this model which you can use
   "inputs": [
     {
       "data": [
-        "Penguins fighting 2 elephants"
+        "Penguins having dinner"
       ],
       "name": "prompt",
       "shape": [
@@ -80,7 +80,7 @@ curl --location '<your_inference_url>' \
               "inputs": [
                 {
                   "data": [
-                    "Penguins fighting 2 elephants"
+                    "Penguins having dinner"
                   ],
                   "name": "prompt",
                   "shape": [
