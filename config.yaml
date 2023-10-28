@@ -2,6 +2,7 @@ build:
   cuda_version: "12.1.1"
   system_packages:
     - "libssl-dev"
+    - "libx11-6"
   python_packages:
     - "torch==1.13.1"
     - "diffusers==0.21.4"
