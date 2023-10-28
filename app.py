@@ -9,7 +9,13 @@ from io import BytesIO
 
 class InferlessPythonModel:
   def initialize(self):
-    self.generator = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float32, use_safetensors=True, variant="fp16", device_map="auto")
+    self.generator = DiffusionPipeline.from_pretrained(
+      "stabilityai/stable-diffusion-xl-base-1.0",
+      torch_dtype=torch.float16,
+      use_safetensors=True,
+      variant="fp16",
+      device_map="auto"
+    )
 
   def infer(self, inputs):
     prompt = inputs["prompt"]
