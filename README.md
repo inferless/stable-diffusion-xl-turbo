@@ -1,4 +1,4 @@
-# Stable Diffusion XL Base
+# Stable Diffusion XL Turbo
 This is a stable diffusion template you can use to import your model on Inferless Platform.
 
 ---
