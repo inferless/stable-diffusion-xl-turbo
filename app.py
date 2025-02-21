@@ -1,15 +1,25 @@
+import os
+os.environ["HF_HUB_ENABLE_HF_TRANSFER"]='1'
+from huggingface_hub import snapshot_download
+import inferless
 import torch
 from diffusers import AutoPipelineForText2Image, AutoencoderKL, EulerAncestralDiscreteScheduler
 import base64
 from io import BytesIO
 
+app = inferless.Cls(gpu="A100")
+
 class InferlessPythonModel:
+  @app.load
   def initialize(self):
+    model_id = "stabilityai/sdxl-turbo"
+    snapshot_download(repo_id=model_id,allow_patterns=["*.safetensors"])
     vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float16)
-    self.pipeline = AutoPipelineForText2Image.from_pretrained("stabilityai/sdxl-turbo",vae=vae, torch_dtype=torch.float16, variant="fp16",use_safetensors=True)
+    self.pipeline = AutoPipelineForText2Image.from_pretrained(model_id,vae=vae, torch_dtype=torch.float16, variant="fp16",use_safetensors=True)
     self.pipeline = self.pipeline.to("cuda")
     self.pipeline.scheduler =  EulerAncestralDiscreteScheduler.from_config(self.pipeline.scheduler.config)
 
+  @app.infer
   def infer(self, inputs):
     prompt = inputs["prompt"]
     pipeline_output_image = self.pipeline(prompt=prompt,
