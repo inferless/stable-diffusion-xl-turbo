@@ -2,10 +2,6 @@ build:
   cuda_version: "12.1.1"
   python_packages:
     - "diffusers==0.24.0"
-    - "pandas==2.1.4"
-    - "torch==2.1.0"
-    - "transformers==4.36.1"
-    - "accelerate==0.25.0"
     - "inferless-cli==2.0.9"
     - "hf-transfer==0.1.9"
     - "huggingface-hub==0.27.1"
